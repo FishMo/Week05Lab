@@ -6,7 +6,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -34,16 +33,17 @@ public class ShoppingListServlet extends HttpServlet {
         {
             session.removeAttribute("name");
             session.invalidate();
+            getServletContext().getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
         }
-            getServletContext().getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
+          
          
-        if (username == null)
+        if (username != null)
         {
-            getServletContext().getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/WEB-INF/shoppingList.jsp").forward(request, response);
         }
         else
         {
-            getServletContext().getRequestDispatcher("/WEB-INF/shoppingList.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
         }    
     }
 
